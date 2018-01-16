@@ -22,15 +22,15 @@ def rm_person_by_pos(pairs, name, position):
             pairs.remove(p)
 
 def lab_pairs(pairs, class_list):
-    buf, ret = [], []
+    here = []
     for person in class_list:
         for pair in pairs:
-            if person not in buf:
-                if (pair[0] == person and pair[1] not in buf) or (pair[0] not in buf and pair[1] == person):
+            if person not in here:
+                if (pair[0] == person and pair[1] not in here) or (pair[0] not in here and pair[1] == person):
                     f.write(str(pair) + "\n")
                     pairs.remove(pair)
-                    buf.append(pair[0])
-                    buf.append(pair[1])
+                    here.append(pair[0])
+                    here.append(pair[1])
                     break
 
 with open("./class_list.txt") as f:
