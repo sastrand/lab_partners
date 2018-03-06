@@ -57,7 +57,8 @@ f.write("""
 | )  \  || )___) )  | (____/\| )   ( || )___) )/\____) |
 |/    )_)|/ \___/   (_______/|/     \||/ \___/ \_______)
                                                         """)
-for week in range(2,11):
+
+for week in range(2,20):
     f.write("\n\n---- Week {} ----\n".format(week))
     f.write("\n-- Tuesday --\n".format(week))
     lab_pairs(first_drv, class_list)
@@ -65,3 +66,4 @@ for week in range(2,11):
     lab_pairs(first_nav, class_list)
 
 f.close()
+
