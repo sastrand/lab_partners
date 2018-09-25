@@ -7,20 +7,6 @@ def choose_two(class_list):
                         ret.append((class_list[p1],class_list[p2]))
         return ret
 
-def rm_pair(pairs, rm_pairs):
-    for p in rm_pairs: 
-        try:
-            pairs.remove(p)
-        except:
-            pass
-
-def rm_person_by_pos(pairs, name, position):
-    for p in pairs:
-        if p[0] == name and position == "drv":
-            pairs.remove(p)
-        elif p[1] == name and position == "nav":
-            pairs.remove(p)
-
 def lab_pairs(pairs, class_list):
     here = []
     for person in class_list:
@@ -36,16 +22,11 @@ def lab_pairs(pairs, class_list):
 with open("./class_list.txt") as f:
     class_list = f.read().splitlines()
 
-with open("./rm_pairs.txt") as f:
-    rm_pairs = [tuple(l) for l in csv.reader(f)]
-
 f = open("output.txt", "w")
 
 first_drv = choose_two(class_list)
 first_drv = first_drv[::-1]
 first_nav = [p[::-1] for p in first_drv]
-
-[rm_pair(l, rm_pairs) for l in [first_drv, first_nav]]
 
 f.write("""
  _        ______     _        _______  ______   _______ 
@@ -60,9 +41,11 @@ f.write("""
 
 for week in range(2,20):
     f.write("\n\n---- Week {} ----\n".format(week))
-    f.write("\n-- Tuesday --\n".format(week))
+    f.write("\n-- Tuesday --\n")
+    f.write('DRIVER','NAVIGATOR\n')
     lab_pairs(first_drv, class_list)
-    f.write("\n-- Thursday --\n".format(week))
+    f.write("\n-- Thursday --\n")
+    f.write('DRIVER','NAVIGATOR\n')
     lab_pairs(first_nav, class_list)
 
 f.close()
