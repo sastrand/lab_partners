@@ -42,10 +42,10 @@ f.write("""
 for week in range(2,20):
     f.write("\n\n---- Week {} ----\n".format(week))
     f.write("\n-- Tuesday --\n")
-    f.write('DRIVER','NAVIGATOR\n')
+    f.write("'DRIVER','NAVIGATOR'\n")
     lab_pairs(first_drv, class_list)
     f.write("\n-- Thursday --\n")
-    f.write('DRIVER','NAVIGATOR\n')
+    f.write("'DRIVER','NAVIGATOR'\n")
     lab_pairs(first_nav, class_list)
 
 f.close()
